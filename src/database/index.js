@@ -1,4 +1,4 @@
-import { Sequelize } from "sequelize";
+import Sequelize from "sequelize";
 import User from "../app/models/User"; // Certifique-se de que o caminho do modelo está correto
 import configDatabase from "../config/config";
 
@@ -10,7 +10,7 @@ class Database {
   }
 
   init() {
-    this.connection = new Sequelize({ configDatabase, dialect: "postgres" });
+    this.connection = new Sequelize(configDatabase);
     models.map((model) => model.init(this.connection));
   }
 }
