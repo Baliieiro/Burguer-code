@@ -1,9 +1,12 @@
 import Sequelize from "sequelize";
-import User from "../app/models/User"; // Certifique-se de que o caminho do modelo está correto
-import configDatabase from "../config/config";
-import Product from "../app/models/Product";
 
-const models = [User, Product];
+import Product from "../app/models/Product";
+import User from "../app/models/User";
+import Category from "../app/models/Category";
+
+import configDatabase from "../config/config";
+
+const models = [User, Product, Category];
 
 class Database {
   constructor() {
