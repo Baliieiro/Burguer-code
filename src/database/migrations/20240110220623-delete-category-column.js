@@ -2,11 +2,16 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  async up(queryInterface) {
     await queryInterface.removeColumn("products", "category");
   },
 
-  async down(queryInterface) {
-    await queryInterface.addColumn("products", "category");
+  async down(queryInterface, Sequelize) {
+    await queryInterface.addColumn("products", {
+      category: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
+    });
   },
 };

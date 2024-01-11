@@ -1,11 +1,12 @@
 import * as Yup from "yup";
 import Product from "../models/Product";
+import Category from "../models/Category";
 class ProductController {
   async store(req, res) {
     const schema = Yup.object().shape({
       name: Yup.string().required(),
       price: Yup.number().required(),
-      category: Yup.string().required(),
+      category_id: Yup.number().required(),
     });
 
     try {
@@ -14,12 +15,12 @@ class ProductController {
       return res.status(400).json({ message: error.errors });
     }
     const { filename: path } = req.file;
-    const { name, price, category } = req.body;
+    const { name, price, category_id } = req.body;
 
     const product = await Product.create({
       name,
       price,
-      category,
+      category_id,
       path,
     });
 
@@ -27,7 +28,15 @@ class ProductController {
   }
 
   async index(req, res) {
-    const product = await Product.findAll();
+    const product = await Product.findAll({
+      include: [
+        {
+          model: Category,
+          as: "category",
+          attributes: ["id", "name"],
+        },
+      ],
+    });
 
     return res.json(product);
   }
