@@ -29,6 +29,7 @@ class UserController {
       name,
       email,
       password,
+      admin,
     });
 
     return res.status(201).json({ id: user.id, name, email, admin });
