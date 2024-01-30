@@ -1,5 +1,5 @@
 import * as Yup from "yup";
-import Category from "../models/Category";
+import Category from "../models/Category"; 
 import User from "../models/User";
 class CategoryController {
   async store(req, res) {
@@ -26,7 +26,7 @@ class CategoryController {
       const categoryExists = await Category.findOne({ where: { name } });
 
       if (categoryExists) {
-        return res.status(400).json({ error: "User already exists" });
+        return res.status(400).json({ error: "Category already exists" });
       }
 
       const { id } = await Category.create({
