@@ -9,14 +9,14 @@ import mongoose from "mongoose";
 
 const models = [User, Product, Category];
 
-class Database {
+class Database { 
   constructor() {
     this.init();
-    this.mongo();
+    this.mongo(); 
   }
 
   init() {
-    this.connection = new Sequelize(configDatabase);
+    this.connection = new Sequelize("postgresql://postgres:FWgZqdCmwDaibaPlVEGOrQaAkjWFBPsu@roundhouse.proxy.rlwy.net:26745/railway");
     models
       .map((model) => model.init(this.connection))
       .map(
@@ -26,7 +26,7 @@ class Database {
 
   mongo() {
     this.moncoConnection = mongoose.connect(
-      "mongodb://localhost:27017/codeburguer"
+      "mongodb://mongo:RHEHndClqZrLTpGNvXBqUqqAgFIaETAg@viaduct.proxy.rlwy.net:55045"
     );
   }
 }
