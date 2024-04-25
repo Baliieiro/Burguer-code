@@ -8,6 +8,7 @@ const corsOptions = {
   origin:"https://interface-code-burguer.vercel.app",
   credentials: true
 }
+
 class App {
   constructor() {
     this.app = express();
