@@ -4,7 +4,7 @@ import Product from "../app/models/Product";
 import User from "../app/models/User";
 import Category from "../app/models/Category";
 
-import configDatabase from "../config/config";
+// import configDatabase from "../config/config";
 import mongoose from "mongoose";
 
 const models = [User, Product, Category];
