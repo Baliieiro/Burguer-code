@@ -4,10 +4,15 @@ import { resolve } from "path";
 import cors from "cors";
 
 import "./database";
+
+const corsOptions = {
+  origin:"https://interface-code-burguer.vercel.app/",
+  credentials: true
+}
 class App {
   constructor() {
     this.app = express();
-    this.app.use(cors())
+    this.app.use(cors(corsOptions))
 
     this.middleware();
     this.routes();
